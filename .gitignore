@@ -1,7 +1,14 @@
 node_modules/
-.idea
+.idea/
 cypress/videos/
 cypress/screenshots/
-irctc-captcha-solver/__pycache__
-cypress/downloads/"cypress.env.json" 
+cypress/downloads/
 cypress.env.json
+cypress/fixtures/passenger_data.local.json
+irctc-captcha-solver/__pycache__/
+irctc-captcha-solve-server/__pycache__/
+*.pyc
+*.log
+.env
+.env.*
+!.env.example
