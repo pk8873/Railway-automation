@@ -1,13 +1,18 @@
 {
   "name": "irctc-cypress-automation",
-  "version": "3.0.4",
-  "description": "IRCTC Ticket Booking",
+  "version": "3.0.5",
+  "description": "IRCTC Cypress automation and local testing project",
   "scripts": {
-    "start-captha-server": "python irctc-captcha-solver/app-server.py --host 0.0.0.0 --port 5000",
-    "wait-for-captha-server-to-come-up": "wait-on http://localhost:5000",
+    "start-captcha-server": "python irctc-captcha-solver/app-server.py --host 127.0.0.1 --port 5000",
+    "start-captha-server": "npm run start-captcha-server",
+    "wait-for-captcha-server": "wait-on http://127.0.0.1:5000",
+    "wait-for-captha-server-to-come-up": "npm run wait-for-captcha-server",
     "start-irctc-booking": "cypress run --headed --no-exit",
-    "start-booking": "concurrently \"npm run start-captha-server\" \"npm run wait-for-captha-server-to-come-up && npm run start-irctc-booking\"",
-    "test": "cypress run"
+    "start-booking": "concurrently \"npm run start-captcha-server\" \"npm run wait-for-captcha-server && npm run start-irctc-booking\"",
+    "test": "cypress run",
+    "test:smoke": "cypress run --spec cypress/e2e/irctc.cy.js",
+    "validate:js": "node --check cypress.config.js && node --check cypress/e2e/irctc.cy.js && node --check cypress/support/commands.js && node --check cypress/utils/index.js",
+    "validate:render": "node --check render_health.js"
   },
   "author": "Shivam Pandey",
   "license": "ISC",

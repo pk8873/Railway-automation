@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: railway-automation-health
+    runtime: node
+    plan: free
+    buildCommand: npm ci
+    startCommand: node render_health.js
+    healthCheckPath: /health
+    autoDeploy: true
